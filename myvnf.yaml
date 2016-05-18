@@ -10,7 +10,7 @@ vdus:
   vdu1:
     id: vdu1
     vm_image: myvnf
-    instance_type: m1.myvnf_tiny
+    instance_type: myvnf_flavor
 
     network_interfaces:
       management:
