@@ -1,0 +1,73 @@
+template_name: MyVNF
+description: A dummy router based on Ubuntu.
+
+service_properties:
+  Id: sample-vnfd
+  vendor: tacker
+  version: 1
+
+vdus:
+  vdu1:
+    id: vdu1
+    vm_image: myvnf
+    instance_type: m1.myvnf_tiny
+
+    network_interfaces:
+      management:
+        network: net_mgmt
+        management: true
+      pkt_in:
+        network: net0
+      pkt_out:
+        network: net1
+
+    placement_policy:
+      availability_zone: nova
+
+    auto-scaling: noop
+    monitoring_policy:
+      ping:
+        monitoring_params:
+          monitoring_delay: 300
+          count: 3
+          interval: .5
+          timeout: 2
+        actions:
+          failure: respawn
+
+    config:
+      param0: key0
+      param1: key1
+
+  vdu2:
+    id: vdu2
+    vm_image: myvnf
+    instance_type: myvnf_flavor
+
+    network_interfaces:
+      management:
+        network: net_mgmt
+        management: true
+      pkt_in:
+        network: net0
+      pkt_out:
+        network: net1
+
+    placement_policy:
+      availability_zone: nova
+
+    auto-scaling: noop
+    monitoring_policy:
+      ping:
+        monitoring_params:
+          monitoring_delay: 200
+          count: 3
+          interval: .5
+          timeout: 2
+        actions:
+          failure: respawn
+
+    config:
+      param0: key0
+      param1: key1
+
