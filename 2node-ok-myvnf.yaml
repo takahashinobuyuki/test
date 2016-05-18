@@ -60,7 +60,7 @@ vdus:
     monitoring_policy:
       ping:
         monitoring_params:
-          monitoring_delay: 100
+          monitoring_delay: 300
           count: 3
           interval: .5
           timeout: 2
