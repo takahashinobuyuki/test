@@ -1,0 +1,122 @@
+
+
+
+
+2016-06-16 17:10:02.043 ERROR networking_odl.ml2.mech_driver [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Unable to perform create on security-groups None {'security_group': {'tenant_id': u'6791d81f0bbb4344822054eb7ef0a290', 'description': u'Default security group', 'id': 'ae4cb8bf-60bb-493b-838c-5d412df03b2e', 'security_group_rules': [{'remote_group_id': 'ae4cb8bf-60bb-493b-838c-5d412df03b2e', 'direction': 'ingress', 'remote_ip_prefix': None, 'protocol': None, 'ethertype': 'IPv4', 'tenant_id': u'6791d81f0bbb4344822054eb7ef0a290', 'port_range_max': None, 'port_range_min': None, 'id': 'abd6d2be-427a-4ee1-a5aa-6c0e7e66482b', 'security_group_id': 'ae4cb8bf-60bb-493b-838c-5d412df03b2e'}, {'remote_group_id': None, 'direction': 'egress', 'remote_ip_prefix': None, 'protocol': None, 'ethertype': 'IPv4', 'tenant_id': u'6791d81f0bbb4344822054eb7ef0a290', 'port_range_max': None, 'port_range_min': None, 'id': '4d048106-dd15-4a69-ac1f-2ea867313b11', 'security_group_id': 'ae4cb8bf-60bb-493b-838c-5d412df03b2e'}, {'remote_group_id': 'ae4cb8bf-60bb-493b-838c-5d412df03b2e', 'direction': 'ingress', 'remote_ip_prefix': None, 'protocol': None, 'ethertype': 'IPv6', 'tenant_id': u'6791d81f0bbb4344822054eb7ef0a290', 'port_range_max': None, 'port_range_min': None, 'id': '3a793729-1f93-489b-9c89-37c654456eae', 'security_group_id': 'ae4cb8bf-60bb-493b-838c-5d412df03b2e'}, {'remote_group_id': None, 'direction': 'egress', 'remote_ip_prefix': None, 'protocol': None, 'ethertype': 'IPv6', 'tenant_id': u'6791d81f0bbb4344822054eb7ef0a290', 'port_range_max': None, 'port_range_min': None, 'id': 'eada9ede-2470-450d-b71b-8e7418eaa9c7', 'security_group_id': 'ae4cb8bf-60bb-493b-838c-5d412df03b2e'}], 'name': 'default'}}
+2016-06-16 17:10:02.045 ERROR neutron.callbacks.manager [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Error during notification for networking_odl.common.callback.OdlSecurityGroupsHandler.sg_callback security_group, after_create
+2016-06-16 17:10:02.045 TRACE neutron.callbacks.manager Traceback (most recent call last):
+2016-06-16 17:10:02.045 TRACE neutron.callbacks.manager   File "/opt/stack/neutron/neutron/callbacks/manager.py", line 141, in _notify_loop
+2016-06-16 17:10:02.045 TRACE neutron.callbacks.manager     callback(resource, event, trigger, **kwargs)
+2016-06-16 17:10:02.045 TRACE neutron.callbacks.manager   File "/opt/stack/networking-odl/networking_odl/common/callback.py", line 81, in sg_callback
+2016-06-16 17:10:02.045 TRACE neutron.callbacks.manager     odl_res_dict)
+2016-06-16 17:10:02.045 TRACE neutron.callbacks.manager   File "/opt/stack/networking-odl/networking_odl/ml2/mech_driver.py", line 339, in sync_from_callback
+2016-06-16 17:10:02.045 TRACE neutron.callbacks.manager     self.out_of_sync = True
+2016-06-16 17:10:02.045 TRACE neutron.callbacks.manager   File "/usr/local/lib/python2.7/dist-packages/oslo_utils/excutils.py", line 204, in __exit__
+2016-06-16 17:10:02.045 TRACE neutron.callbacks.manager     six.reraise(self.type_, self.value, self.tb)
+2016-06-16 17:10:02.045 TRACE neutron.callbacks.manager   File "/opt/stack/networking-odl/networking_odl/ml2/mech_driver.py", line 330, in sync_from_callback
+2016-06-16 17:10:02.045 TRACE neutron.callbacks.manager     self.client.sendjson(method, urlpath, resource_dict)
+2016-06-16 17:10:02.045 TRACE neutron.callbacks.manager   File "/opt/stack/networking-odl/networking_odl/common/client.py", line 42, in sendjson
+2016-06-16 17:10:02.045 TRACE neutron.callbacks.manager     r.raise_for_status()
+2016-06-16 17:10:02.045 TRACE neutron.callbacks.manager   File "/usr/local/lib/python2.7/dist-packages/requests/models.py", line 837, in raise_for_status
+2016-06-16 17:10:02.045 TRACE neutron.callbacks.manager     raise HTTPError(http_error_msg, response=self)
+2016-06-16 17:10:02.045 TRACE neutron.callbacks.manager HTTPError: 500 Server Error: Server Error for url: http://192.168.11.213:8181/controller/nb/v2/neutron/security-groups
+2016-06-16 17:10:02.045 TRACE neutron.callbacks.manager 
+2016-06-16 17:10:02.079 DEBUG neutron.plugins.ml2.drivers.helpers [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] vxlan segment allocate from pool started with {'vxlan_vni': 1011}  from (pid=13773) allocate_partially_specified_segment /opt/stack/neutron/neutron/plugins/ml2/drivers/helpers.py:139
+2016-06-16 17:10:02.082 DEBUG neutron.plugins.ml2.drivers.helpers [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] vxlan segment allocate from pool success with {'vxlan_vni': 1011}  from (pid=13773) allocate_partially_specified_segment /opt/stack/neutron/neutron/plugins/ml2/drivers/helpers.py:147
+2016-06-16 17:10:02.086 INFO neutron.plugins.ml2.db [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Added segment b2d406a1-3f65-487b-b471-c4c5e2355fc6 of type vxlan for network 821e696f-0345-4c78-ae12-79e73880b849
+2016-06-16 17:10:02.089 INFO neutron.tests.unit.plugins.ml2.drivers.mechanism_logger [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] create_network_precommit called with network settings {'status': 'ACTIVE', 'subnets': [], 'name': u'net01', 'provider:physical_network': None, 'admin_state_up': True, 'tenant_id': u'6791d81f0bbb4344822054eb7ef0a290', 'mtu': 0, 'router:external': False, 'port_security_enabled': True, 'vlan_transparent': None, 'shared': False, 'provider:network_type': u'vxlan', 'id': '821e696f-0345-4c78-ae12-79e73880b849', 'provider:segmentation_id': 1011} (original settings None) and network segments [{'segmentation_id': 1011, 'physical_network': None, 'id': u'b2d406a1-3f65-487b-b471-c4c5e2355fc6', 'network_type': u'vxlan'}]
+2016-06-16 17:10:02.108 DEBUG oslo_concurrency.lockutils [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Lock "odl-sync-full" acquired by "networking_odl.ml2.mech_driver.sync_full" :: waited 0.000s from (pid=13773) inner /usr/local/lib/python2.7/dist-packages/oslo_concurrency/lockutils.py:253
+2016-06-16 17:10:02.125 DEBUG networking_odl.common.client [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Sending METHOD (get) URL (http://192.168.11.213:8181/controller/nb/v2/neutron/networks/821e696f-0345-4c78-ae12-79e73880b849) JSON (None) from (pid=13773) sendjson /opt/stack/networking-odl/networking_odl/common/client.py:38
+2016-06-16 17:10:02.133 DEBUG networking_odl.common.client [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Sending METHOD (post) URL (http://192.168.11.213:8181/controller/nb/v2/neutron/networks) JSON ({'network': [{'name': u'net01', 'provider:physical_network': None, 'admin_state_up': True, 'tenant_id': u'6791d81f0bbb4344822054eb7ef0a290', 'mtu': 1450, 'router:external': False, 'port_security_enabled': True, 'vlan_transparent': None, 'shared': False, 'provider:network_type': u'vxlan', 'id': u'821e696f-0345-4c78-ae12-79e73880b849', 'provider:segmentation_id': 1011}]}) from (pid=13773) sendjson /opt/stack/networking-odl/networking_odl/common/client.py:38
+2016-06-16 17:10:02.148 DEBUG oslo_concurrency.lockutils [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Lock "odl-sync-full" released by "networking_odl.ml2.mech_driver.sync_full" :: held 0.039s from (pid=13773) inner /usr/local/lib/python2.7/dist-packages/oslo_concurrency/lockutils.py:265
+2016-06-16 17:10:02.148 ERROR neutron.plugins.ml2.managers [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Mechanism driver 'opendaylight' failed in create_network_postcommit
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers Traceback (most recent call last):
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers   File "/opt/stack/neutron/neutron/plugins/ml2/managers.py", line 404, in _call_on_drivers
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers     getattr(driver.obj, method_name)(context)
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers   File "/opt/stack/neutron/neutron/plugins/ml2/drivers/opendaylight/driver.py", line 65, in create_network_postcommit
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers     self.odl_drv.synchronize('create', odl_const.ODL_NETWORKS, context)
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/ml2/mech_driver.py", line 215, in synchronize
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers     self.sync_full(context._plugin)
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers   File "/usr/local/lib/python2.7/dist-packages/oslo_concurrency/lockutils.py", line 254, in inner
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers     return f(*args, **kwargs)
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/ml2/mech_driver.py", line 277, in sync_full
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers     self.sync_resources(plugin, dbcontext, collection_name)
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/ml2/mech_driver.py", line 255, in sync_resources
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers     self.client.sendjson('post', collection_name_url, {key: to_be_synced})
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/common/client.py", line 42, in sendjson
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers     r.raise_for_status()
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers   File "/usr/local/lib/python2.7/dist-packages/requests/models.py", line 837, in raise_for_status
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers     raise HTTPError(http_error_msg, response=self)
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers HTTPError: 500 Server Error: Server Error for url: http://192.168.11.213:8181/controller/nb/v2/neutron/networks
+2016-06-16 17:10:02.148 TRACE neutron.plugins.ml2.managers 
+2016-06-16 17:10:02.157 ERROR neutron.plugins.ml2.plugin [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] mechanism_manager.create_network_postcommit failed, deleting network '821e696f-0345-4c78-ae12-79e73880b849'
+2016-06-16 17:10:02.158 DEBUG neutron.plugins.ml2.plugin [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Deleting network 821e696f-0345-4c78-ae12-79e73880b849 from (pid=13773) delete_network /opt/stack/neutron/neutron/plugins/ml2/plugin.py:746
+2016-06-16 17:10:02.167 DEBUG neutron.plugins.ml2.plugin [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Ports to auto-delete: [] from (pid=13773) delete_network /opt/stack/neutron/neutron/plugins/ml2/plugin.py:768
+2016-06-16 17:10:02.173 DEBUG neutron.plugins.ml2.plugin [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Subnets to auto-delete: [] from (pid=13773) delete_network /opt/stack/neutron/neutron/plugins/ml2/plugin.py:781
+2016-06-16 17:10:02.191 INFO neutron.tests.unit.plugins.ml2.drivers.mechanism_logger [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] delete_network_precommit called with network settings {'status': u'ACTIVE', 'subnets': [], 'name': u'net01', 'provider:physical_network': None, 'admin_state_up': True, 'tenant_id': u'6791d81f0bbb4344822054eb7ef0a290', 'mtu': 1450, 'router:external': False, 'port_security_enabled': True, 'vlan_transparent': None, 'shared': False, 'provider:network_type': u'vxlan', 'id': u'821e696f-0345-4c78-ae12-79e73880b849', 'provider:segmentation_id': 1011} (original settings None) and network segments [{'segmentation_id': 1011, 'physical_network': None, 'id': u'b2d406a1-3f65-487b-b471-c4c5e2355fc6', 'network_type': u'vxlan'}]
+2016-06-16 17:10:02.195 DEBUG neutron.plugins.ml2.drivers.type_tunnel [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Releasing vxlan tunnel 1011 to pool from (pid=13773) release_segment /opt/stack/neutron/neutron/plugins/ml2/drivers/type_tunnel.py:230
+2016-06-16 17:10:02.207 DEBUG neutron.plugins.ml2.plugin [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Deleting network record <neutron.db.models_v2.Network[object at 7f2452ee4510] {tenant_id=u'6791d81f0bbb4344822054eb7ef0a290', id=u'821e696f-0345-4c78-ae12-79e73880b849', name=u'net01', status=u'ACTIVE', admin_state_up=True, mtu=1450, vlan_transparent=None}> from (pid=13773) delete_network /opt/stack/neutron/neutron/plugins/ml2/plugin.py:793
+2016-06-16 17:10:02.207 DEBUG neutron.plugins.ml2.plugin [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Committing transaction from (pid=13773) delete_network /opt/stack/neutron/neutron/plugins/ml2/plugin.py:798
+2016-06-16 17:10:02.227 DEBUG oslo_concurrency.lockutils [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Lock "odl-sync-full" acquired by "networking_odl.ml2.mech_driver.sync_full" :: waited 0.000s from (pid=13773) inner /usr/local/lib/python2.7/dist-packages/oslo_concurrency/lockutils.py:253
+/usr/local/lib/python2.7/dist-packages/sqlalchemy/sql/default_comparator.py:153: SAWarning: The IN-predicate on "ml2_network_segments.network_id" was invoked with an empty sequence. This results in a contradiction, which nonetheless can be expensive to evaluate.  Consider alternative strategies for improved performance.
+  'strategies for improved performance.' % expr)
+2016-06-16 17:10:02.245 DEBUG networking_odl.common.client [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Sending METHOD (post) URL (http://192.168.11.213:8181/controller/nb/v2/neutron/networks) JSON ({'networks': []}) from (pid=13773) sendjson /opt/stack/networking-odl/networking_odl/common/client.py:38
+2016-06-16 17:10:02.261 DEBUG oslo_concurrency.lockutils [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Lock "odl-sync-full" released by "networking_odl.ml2.mech_driver.sync_full" :: held 0.034s from (pid=13773) inner /usr/local/lib/python2.7/dist-packages/oslo_concurrency/lockutils.py:265
+2016-06-16 17:10:02.262 ERROR neutron.plugins.ml2.managers [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Mechanism driver 'opendaylight' failed in delete_network_postcommit
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers Traceback (most recent call last):
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers   File "/opt/stack/neutron/neutron/plugins/ml2/managers.py", line 404, in _call_on_drivers
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers     getattr(driver.obj, method_name)(context)
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers   File "/opt/stack/neutron/neutron/plugins/ml2/drivers/opendaylight/driver.py", line 71, in delete_network_postcommit
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers     self.odl_drv.synchronize('delete', odl_const.ODL_NETWORKS, context)
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/ml2/mech_driver.py", line 215, in synchronize
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers     self.sync_full(context._plugin)
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers   File "/usr/local/lib/python2.7/dist-packages/oslo_concurrency/lockutils.py", line 254, in inner
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers     return f(*args, **kwargs)
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/ml2/mech_driver.py", line 277, in sync_full
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers     self.sync_resources(plugin, dbcontext, collection_name)
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/ml2/mech_driver.py", line 255, in sync_resources
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers     self.client.sendjson('post', collection_name_url, {key: to_be_synced})
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/common/client.py", line 42, in sendjson
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers     r.raise_for_status()
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers   File "/usr/local/lib/python2.7/dist-packages/requests/models.py", line 837, in raise_for_status
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers     raise HTTPError(http_error_msg, response=self)
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers HTTPError: 500 Server Error: Server Error for url: http://192.168.11.213:8181/controller/nb/v2/neutron/networks
+2016-06-16 17:10:02.262 TRACE neutron.plugins.ml2.managers 
+2016-06-16 17:10:02.265 INFO neutron.tests.unit.plugins.ml2.drivers.mechanism_logger [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] delete_network_postcommit called with network settings {'status': u'ACTIVE', 'subnets': [], 'name': u'net01', 'provider:physical_network': None, 'admin_state_up': True, 'tenant_id': u'6791d81f0bbb4344822054eb7ef0a290', 'mtu': 1450, 'router:external': False, 'port_security_enabled': True, 'vlan_transparent': None, 'shared': False, 'provider:network_type': u'vxlan', 'id': u'821e696f-0345-4c78-ae12-79e73880b849', 'provider:segmentation_id': 1011} (original settings None) and network segments [{'segmentation_id': 1011, 'physical_network': None, 'id': u'b2d406a1-3f65-487b-b471-c4c5e2355fc6', 'network_type': u'vxlan'}]
+2016-06-16 17:10:02.266 ERROR neutron.plugins.ml2.plugin [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] mechanism_manager.delete_network_postcommit failed
+2016-06-16 17:10:02.266 DEBUG oslo_messaging._drivers.amqp [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Pool creating new connection from (pid=13773) create /usr/local/lib/python2.7/dist-packages/oslo_messaging/_drivers/amqp.py:103
+2016-06-16 17:10:02.268 INFO oslo.messaging._drivers.impl_rabbit [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Connecting to AMQP server on 192.168.11.216:5672
+2016-06-16 17:10:02.277 INFO oslo.messaging._drivers.impl_rabbit [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] Connected to AMQP server on 192.168.11.216:5672
+2016-06-16 17:10:02.290 ERROR neutron.api.v2.resource [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] create failed
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource Traceback (most recent call last):
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource   File "/opt/stack/neutron/neutron/api/v2/resource.py", line 83, in resource
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource     result = method(request=request, **args)
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource   File "/opt/stack/neutron/neutron/api/v2/base.py", line 410, in create
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource     return self._create(request, body, **kwargs)
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource   File "/usr/local/lib/python2.7/dist-packages/oslo_db/api.py", line 146, in wrapper
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource     ectxt.value = e.inner_exc
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource   File "/usr/local/lib/python2.7/dist-packages/oslo_utils/excutils.py", line 204, in __exit__
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource     six.reraise(self.type_, self.value, self.tb)
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource   File "/usr/local/lib/python2.7/dist-packages/oslo_db/api.py", line 136, in wrapper
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource     return f(*args, **kwargs)
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource   File "/opt/stack/neutron/neutron/api/v2/base.py", line 521, in _create
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource     obj = do_create(body)
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource   File "/opt/stack/neutron/neutron/api/v2/base.py", line 503, in do_create
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource     request.context, reservation.reservation_id)
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource   File "/usr/local/lib/python2.7/dist-packages/oslo_utils/excutils.py", line 204, in __exit__
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource     six.reraise(self.type_, self.value, self.tb)
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource   File "/opt/stack/neutron/neutron/api/v2/base.py", line 496, in do_create
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource     return obj_creator(request.context, **kwargs)
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource   File "/opt/stack/neutron/neutron/plugins/ml2/plugin.py", line 648, in create_network
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource     self.delete_network(context, result['id'])
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource   File "/usr/local/lib/python2.7/dist-packages/oslo_utils/excutils.py", line 204, in __exit__
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource     six.reraise(self.type_, self.value, self.tb)
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource   File "/opt/stack/neutron/neutron/plugins/ml2/plugin.py", line 643, in create_network
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource     self.mechanism_manager.create_network_postcommit(mech_context)
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource   File "/opt/stack/neutron/neutron/plugins/ml2/managers.py", line 444, in create_network_postcommit
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource     self._call_on_drivers("create_network_postcommit", context)
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource   File "/opt/stack/neutron/neutron/plugins/ml2/managers.py", line 415, in _call_on_drivers
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource     method=method_name
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource MechanismDriverError: create_network_postcommit failed.
+2016-06-16 17:10:02.290 TRACE neutron.api.v2.resource 
+2016-06-16 17:10:02.309 INFO neutron.wsgi [req-4e1f72a2-1966-4930-9f49-36ec9da7af32 demo 6791d81f0bbb4344822054eb7ef0a290] 192.168.11.216 - - [16/Jun/2016 17:10:02] "POST /v2.0/networks.json HTTP/1.1" 500 345 0.590976
