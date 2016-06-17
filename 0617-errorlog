@@ -1,0 +1,574 @@
+016-06-17 17:28:34.538 ERROR stevedore.extension [-] Could not load 'opendaylight': duplicate option: username
+2016-06-17 17:28:34.538 ERROR stevedore.extension [-] duplicate option: username
+2016-06-17 17:28:34.538 TRACE stevedore.extension Traceback (most recent call last):
+2016-06-17 17:28:34.538 TRACE stevedore.extension   File "/usr/local/lib/python2.7/dist-packages/stevedore/extension.py", line 163, in _load_plugins
+2016-06-17 17:28:34.538 TRACE stevedore.extension     verify_requirements,
+2016-06-17 17:28:34.538 TRACE stevedore.extension   File "/usr/local/lib/python2.7/dist-packages/stevedore/named.py", line 123, in _load_one_plugin
+2016-06-17 17:28:34.538 TRACE stevedore.extension     verify_requirements,
+2016-06-17 17:28:34.538 TRACE stevedore.extension   File "/usr/local/lib/python2.7/dist-packages/stevedore/extension.py", line 184, in _load_one_plugin
+2016-06-17 17:28:34.538 TRACE stevedore.extension     plugin = ep.resolve()
+2016-06-17 17:28:34.538 TRACE stevedore.extension   File "/usr/local/lib/python2.7/dist-packages/pkg_resources/__init__.py", line 2235, in resolve
+2016-06-17 17:28:34.538 TRACE stevedore.extension     module = __import__(self.module_name, fromlist=['__name__'], level=0)
+2016-06-17 17:28:34.538 TRACE stevedore.extension   File "/opt/stack/neutron/neutron/plugins/ml2/drivers/opendaylight/driver.py", line 38, in <module>
+2016-06-17 17:28:34.538 TRACE stevedore.extension     cfg.CONF.register_opts(odl_opts, "ml2_odl")
+2016-06-17 17:28:34.538 TRACE stevedore.extension   File "/usr/local/lib/python2.7/dist-packages/oslo_config/cfg.py", line 1824, in __inner
+2016-06-17 17:28:34.538 TRACE stevedore.extension     result = f(self, *args, **kwargs)
+2016-06-17 17:28:34.538 TRACE stevedore.extension   File "/usr/local/lib/python2.7/dist-packages/oslo_config/cfg.py", line 1983, in register_opts
+2016-06-17 17:28:34.538 TRACE stevedore.extension     self.register_opt(opt, group, clear_cache=False)
+2016-06-17 17:28:34.538 TRACE stevedore.extension   File "/usr/local/lib/python2.7/dist-packages/oslo_config/cfg.py", line 1828, in __inner
+2016-06-17 17:28:34.538 TRACE stevedore.extension     return f(self, *args, **kwargs)
+2016-06-17 17:28:34.538 TRACE stevedore.extension   File "/usr/local/lib/python2.7/dist-packages/oslo_config/cfg.py", line 1967, in register_opt
+2016-06-17 17:28:34.538 TRACE stevedore.extension     return group._register_opt(opt, cli)
+2016-06-17 17:28:34.538 TRACE stevedore.extension   File "/usr/local/lib/python2.7/dist-packages/oslo_config/cfg.py", line 1345, in _register_opt
+2016-06-17 17:28:34.538 TRACE stevedore.extension     if _is_opt_registered(self._opts, opt):
+2016-06-17 17:28:34.538 TRACE stevedore.extension   File "/usr/local/lib/python2.7/dist-packages/oslo_config/cfg.py", line 574, in _is_opt_registered
+2016-06-17 17:28:34.538 TRACE stevedore.extension     raise DuplicateOptError(opt.name)
+2016-06-17 17:28:34.538 TRACE stevedore.extension DuplicateOptError: duplicate option: username
+2016-06-17 17:28:34.538 TRACE stevedore.extension 
+
+
+2016-06-17 17:36:06.743 ERROR neutron.callbacks.manager [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Error during notification for networking_odl.common.callback.OdlSecurityGroupsHandler.sg_callback security_group, after_create
+2016-06-17 17:36:06.743 TRACE neutron.callbacks.manager Traceback (most recent call last):
+2016-06-17 17:36:06.743 TRACE neutron.callbacks.manager   File "/opt/stack/neutron/neutron/callbacks/manager.py", line 141, in _notify_loop
+2016-06-17 17:36:06.743 TRACE neutron.callbacks.manager     callback(resource, event, trigger, **kwargs)
+2016-06-17 17:36:06.743 TRACE neutron.callbacks.manager   File "/opt/stack/networking-odl/networking_odl/common/callback.py", line 47, in sg_callback
+2016-06-17 17:36:06.743 TRACE neutron.callbacks.manager     events.PRECOMMIT_CREATE: odl_const.ODL_CREATE,
+2016-06-17 17:36:06.743 TRACE neutron.callbacks.manager AttributeError: 'module' object has no attribute 'PRECOMMIT_CREATE'
+2016-06-17 17:36:06.743 TRACE neutron.callbacks.manager 
+2016-06-17 17:36:06.763 DEBUG neutron.plugins.ml2.drivers.helpers [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] vxlan segment allocate from pool started with {'vxlan_vni': 1004}  from (pid=15343) allocate_partially_specified_segment /opt/stack/neutron/neutron/plugins/ml2/drivers/helpers.py:139
+2016-06-17 17:36:06.767 DEBUG neutron.plugins.ml2.drivers.helpers [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] vxlan segment allocate from pool success with {'vxlan_vni': 1004}  from (pid=15343) allocate_partially_specified_segment /opt/stack/neutron/neutron/plugins/ml2/drivers/helpers.py:147
+2016-06-17 17:36:06.769 INFO neutron.plugins.ml2.db [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Added segment 5dba4dbc-0e7c-41d4-a9b0-715235ab6f66 of type vxlan for network 73d70713-3c20-441e-9d63-10d47a81ff05
+2016-06-17 17:36:06.772 INFO neutron.tests.unit.plugins.ml2.drivers.mechanism_logger [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] create_network_precommit called with network settings {'status': 'ACTIVE', 'subnets': [], 'name': u'net01', 'provider:physical_network': None, 'admin_state_up': True, 'tenant_id': u'58fac5df091f413294f16b478dbd955b', 'mtu': 0, 'router:external': False, 'port_security_enabled': True, 'vlan_transparent': None, 'shared': False, 'provider:network_type': u'vxlan', 'id': '73d70713-3c20-441e-9d63-10d47a81ff05', 'provider:segmentation_id': 1004} (original settings None) and network segments [{'segmentation_id': 1004, 'physical_network': None, 'id': u'5dba4dbc-0e7c-41d4-a9b0-715235ab6f66', 'network_type': u'vxlan'}]
+2016-06-17 17:36:06.796 DEBUG oslo_concurrency.lockutils [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Lock "odl-sync-full" acquired by "networking_odl.ml2.mech_driver.sync_full" :: waited 0.000s from (pid=15343) inner /usr/local/lib/python2.7/dist-packages/oslo_concurrency/lockutils.py:253
+2016-06-17 17:36:06.817 DEBUG networking_odl.common.client [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Sending METHOD (get) URL (http://192.168.11.216:8181/controller/nb/v2/neutron/networks/73d70713-3c20-441e-9d63-10d47a81ff05) JSON (None) from (pid=15343) request /opt/stack/networking-odl/networking_odl/common/client.py:64
+2016-06-17 17:36:07.411 DEBUG networking_odl.common.client [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Exception from ODL: 404 Client Error: Not Found for url: http://192.168.11.216:8181/controller/nb/v2/neutron/networks/73d70713-3c20-441e-9d63-10d47a81ff05 Network UUID does not exist. from (pid=15343) _check_rensponse /opt/stack/networking-odl/networking_odl/common/client.py:90
+2016-06-17 17:36:07.411 TRACE networking_odl.common.client Traceback (most recent call last):
+2016-06-17 17:36:07.411 TRACE networking_odl.common.client   File "/opt/stack/networking-odl/networking_odl/common/client.py", line 86, in _check_rensponse
+2016-06-17 17:36:07.411 TRACE networking_odl.common.client     rensponse.raise_for_status()
+2016-06-17 17:36:07.411 TRACE networking_odl.common.client   File "/usr/local/lib/python2.7/dist-packages/requests/models.py", line 837, in raise_for_status
+2016-06-17 17:36:07.411 TRACE networking_odl.common.client     raise HTTPError(http_error_msg, response=self)
+2016-06-17 17:36:07.411 TRACE networking_odl.common.client HTTPError: 404 Client Error: Not Found for url: http://192.168.11.216:8181/controller/nb/v2/neutron/networks/73d70713-3c20-441e-9d63-10d47a81ff05
+2016-06-17 17:36:07.411 TRACE networking_odl.common.client 
+2016-06-17 17:36:07.434 DEBUG networking_odl.common.client [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Sending METHOD (post) URL (http://192.168.11.216:8181/controller/nb/v2/neutron/networks) JSON ({
+  "network": [
+    {
+      "name": "net01", 
+      "provider:physical_network": null, 
+      "admin_state_up": true, 
+      "tenant_id": "58fac5df091f413294f16b478dbd955b", 
+      "mtu": 1450, 
+      "router:external": false, 
+      "port_security_enabled": true, 
+      "vlan_transparent": null, 
+      "shared": false, 
+      "provider:network_type": "vxlan", 
+      "id": "73d70713-3c20-441e-9d63-10d47a81ff05", 
+      "provider:segmentation_id": 1004
+    }
+  ]
+}) from (pid=15343) request /opt/stack/networking-odl/networking_odl/common/client.py:64
+2016-06-17 17:36:08.802 DEBUG networking_odl.common.client [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Exception from ODL: 500 Server Error: Server Error for url: http://192.168.11.216:8181/controller/nb/v2/neutron/networks <html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+<title>Error 500 Server Error</title>
+</head>
+<body><h2>HTTP ERROR 500</h2>
+<p>Problem accessing /controller/nb/v2/neutron/networks. Reason:
+<pre>    Server Error</pre></p><h3>Caused by:</h3><pre>java.lang.NoClassDefFoundError: org/eclipse/persistence/internal/libraries/antlr/runtime/tree/Tree
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.getNewXMLReader(SAXUnmarshaller.java:200)
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.getXMLReader(SAXUnmarshaller.java:188)
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.unmarshal(SAXUnmarshaller.java:425)
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.unmarshal(SAXUnmarshaller.java:375)
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.unmarshal(SAXUnmarshaller.java:705)
+        at org.eclipse.persistence.oxm.XMLUnmarshaller.unmarshal(XMLUnmarshaller.java:655)
+        at org.eclipse.persistence.jaxb.JAXBUnmarshaller.unmarshal(JAXBUnmarshaller.java:301)
+        at org.eclipse.persistence.jaxb.rs.MOXyJsonProvider.readFrom(MOXyJsonProvider.java:613)
+        at com.sun.jersey.spi.container.ContainerRequest.getEntity(ContainerRequest.java:488)
+        at com.sun.jersey.server.impl.model.method.dispatch.EntityParamDispatchProvider$EntityInjectable.getValue(EntityParamDispatchProvider.java:123)
+        at com.sun.jersey.server.impl.inject.InjectableValuesProvider.getInjectableValues(InjectableValuesProvider.java:46)
+        at com.sun.jersey.server.impl.model.method.dispatch.AbstractResourceMethodDispatchProvider$EntityParamInInvoker.getParams(AbstractResourceMethodDispatchProvider.java:153)
+        at com.sun.jersey.server.impl.model.method.dispatch.AbstractResourceMethodDispatchProvider$ResponseOutInvoker._dispatch(AbstractResourceMethodDispatchProvider.java:203)
+        at com.sun.jersey.server.impl.model.method.dispatch.ResourceJavaMethodDispatcher.dispatch(ResourceJavaMethodDispatcher.java:75)
+        at com.sun.jersey.server.impl.uri.rules.HttpMethodRule.accept(HttpMethodRule.java:302)
+        at com.sun.jersey.server.impl.uri.rules.ResourceClassRule.accept(ResourceClassRule.java:108)
+        at com.sun.jersey.server.impl.uri.rules.RightHandPathRule.accept(RightHandPathRule.java:147)
+        at com.sun.jersey.server.impl.uri.rules.RootResourceClassesRule.accept(RootResourceClassesRule.java:84)
+        at com.sun.jersey.server.impl.application.WebApplicationImpl._handleRequest(WebApplicationImpl.java:1511)
+        at com.sun.jersey.server.impl.application.WebApplicationImpl._handleRequest(WebApplicationImpl.java:1442)
+        at com.sun.jersey.server.impl.application.WebApplicationImpl.handleRequest(WebApplicationImpl.java:1391)
+        at com.sun.jersey.server.impl.application.WebApplicationImpl.handleRequest(WebApplicationImpl.java:1381)
+        at com.sun.jersey.spi.container.servlet.WebComponent.service(WebComponent.java:416)
+        at com.sun.jersey.spi.container.servlet.ServletContainer.service(ServletContainer.java:538)
+        at com.sun.jersey.spi.container.servlet.ServletContainer.service(ServletContainer.java:716)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:668)
+        at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:684)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1496)
+        at org.eclipse.jetty.servlets.CrossOriginFilter.handle(CrossOriginFilter.java:247)
+        at org.eclipse.jetty.servlets.CrossOriginFilter.doFilter(CrossOriginFilter.java:210)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1467)
+        at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:501)
+        at org.ops4j.pax.web.service.jetty.internal.HttpServiceServletHandler.doHandle(HttpServiceServletHandler.java:69)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:137)
+        at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:557)
+        at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:231)
+        at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1086)
+        at org.ops4j.pax.web.service.jetty.internal.HttpServiceContext.doHandle(HttpServiceContext.java:240)
+        at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:429)
+        at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:193)
+        at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1020)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:135)
+        at org.ops4j.pax.web.service.jetty.internal.JettyServerHandlerCollection.handle(JettyServerHandlerCollection.java:75)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:116)
+        at org.eclipse.jetty.server.Server.handle(Server.java:370)
+        at org.eclipse.jetty.server.AbstractHttpConnection.handleRequest(AbstractHttpConnection.java:494)
+        at org.eclipse.jetty.server.AbstractHttpConnection.content(AbstractHttpConnection.java:982)
+        at org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.content(AbstractHttpConnection.java:1043)
+        at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:865)
+        at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:240)
+        at org.eclipse.jetty.server.AsyncHttpConnection.handle(AsyncHttpConnection.java:82)
+        at org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle(SelectChannelEndPoint.java:696)
+        at org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run(SelectChannelEndPoint.java:53)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:608)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:543)
+        at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.ClassNotFoundException: org.eclipse.persistence.internal.libraries.antlr.runtime.tree.Tree
+        at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:501)
+        at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+        at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+        at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+        ... 56 more
+</pre>
+<h3>Caused by:</h3><pre>java.lang.ClassNotFoundException: org.eclipse.persistence.internal.libraries.antlr.runtime.tree.Tree
+        at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:501)
+        at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+        at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+        at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.getNewXMLReader(SAXUnmarshaller.java:200)
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.getXMLReader(SAXUnmarshaller.java:188)
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.unmarshal(SAXUnmarshaller.java:425)
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.unmarshal(SAXUnmarshaller.java:375)
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.unmarshal(SAXUnmarshaller.java:705)
+        at org.eclipse.persistence.oxm.XMLUnmarshaller.unmarshal(XMLUnmarshaller.java:655)
+        at org.eclipse.persistence.jaxb.JAXBUnmarshaller.unmarshal(JAXBUnmarshaller.java:301)
+        at org.eclipse.persistence.jaxb.rs.MOXyJsonProvider.readFrom(MOXyJsonProvider.java:613)
+        at com.sun.jersey.spi.container.ContainerRequest.getEntity(ContainerRequest.java:488)
+        at com.sun.jersey.server.impl.model.method.dispatch.EntityParamDispatchProvider$EntityInjectable.getValue(EntityParamDispatchProvider.java:123)
+        at com.sun.jersey.server.impl.inject.InjectableValuesProvider.getInjectableValues(InjectableValuesProvider.java:46)
+        at com.sun.jersey.server.impl.model.method.dispatch.AbstractResourceMethodDispatchProvider$EntityParamInInvoker.getParams(AbstractResourceMethodDispatchProvider.java:153)
+        at com.sun.jersey.server.impl.model.method.dispatch.AbstractResourceMethodDispatchProvider$ResponseOutInvoker._dispatch(AbstractResourceMethodDispatchProvider.java:203)
+        at com.sun.jersey.server.impl.model.method.dispatch.ResourceJavaMethodDispatcher.dispatch(ResourceJavaMethodDispatcher.java:75)
+        at com.sun.jersey.server.impl.uri.rules.HttpMethodRule.accept(HttpMethodRule.java:302)
+        at com.sun.jersey.server.impl.uri.rules.ResourceClassRule.accept(ResourceClassRule.java:108)
+        at com.sun.jersey.server.impl.uri.rules.RightHandPathRule.accept(RightHandPathRule.java:147)
+        at com.sun.jersey.server.impl.uri.rules.RootResourceClassesRule.accept(RootResourceClassesRule.java:84)
+        at com.sun.jersey.server.impl.application.WebApplicationImpl._handleRequest(WebApplicationImpl.java:1511)
+        at com.sun.jersey.server.impl.application.WebApplicationImpl._handleRequest(WebApplicationImpl.java:1442)
+        at com.sun.jersey.server.impl.application.WebApplicationImpl.handleRequest(WebApplicationImpl.java:1391)
+        at com.sun.jersey.server.impl.application.WebApplicationImpl.handleRequest(WebApplicationImpl.java:1381)
+        at com.sun.jersey.spi.container.servlet.WebComponent.service(WebComponent.java:416)
+        at com.sun.jersey.spi.container.servlet.ServletContainer.service(ServletContainer.java:538)
+        at com.sun.jersey.spi.container.servlet.ServletContainer.service(ServletContainer.java:716)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:668)
+        at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:684)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1496)
+        at org.eclipse.jetty.servlets.CrossOriginFilter.handle(CrossOriginFilter.java:247)
+        at org.eclipse.jetty.servlets.CrossOriginFilter.doFilter(CrossOriginFilter.java:210)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1467)
+        at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:501)
+        at org.ops4j.pax.web.service.jetty.internal.HttpServiceServletHandler.doHandle(HttpServiceServletHandler.java:69)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:137)
+        at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:557)
+        at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:231)
+        at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1086)
+        at org.ops4j.pax.web.service.jetty.internal.HttpServiceContext.doHandle(HttpServiceContext.java:240)
+        at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:429)
+        at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:193)
+        at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1020)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:135)
+        at org.ops4j.pax.web.service.jetty.internal.JettyServerHandlerCollection.handle(JettyServerHandlerCollection.java:75)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:116)
+        at org.eclipse.jetty.server.Server.handle(Server.java:370)
+        at org.eclipse.jetty.server.AbstractHttpConnection.handleRequest(AbstractHttpConnection.java:494)
+        at org.eclipse.jetty.server.AbstractHttpConnection.content(AbstractHttpConnection.java:982)
+        at org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.content(AbstractHttpConnection.java:1043)
+        at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:865)
+        at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:240)
+        at org.eclipse.jetty.server.AsyncHttpConnection.handle(AsyncHttpConnection.java:82)
+        at org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle(SelectChannelEndPoint.java:696)
+        at org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run(SelectChannelEndPoint.java:53)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:608)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:543)
+        at java.lang.Thread.run(Thread.java:745)
+</pre>
+<hr /><i><small>Powered by Jetty://</small></i><br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+
+</body>
+</html>
+ from (pid=15343) _check_rensponse /opt/stack/networking-odl/networking_odl/common/client.py:90
+2016-06-17 17:36:08.802 TRACE networking_odl.common.client Traceback (most recent call last):
+2016-06-17 17:36:08.802 TRACE networking_odl.common.client   File "/opt/stack/networking-odl/networking_odl/common/client.py", line 86, in _check_rensponse
+2016-06-17 17:36:08.802 TRACE networking_odl.common.client     rensponse.raise_for_status()
+2016-06-17 17:36:08.802 TRACE networking_odl.common.client   File "/usr/local/lib/python2.7/dist-packages/requests/models.py", line 837, in raise_for_status
+2016-06-17 17:36:08.802 TRACE networking_odl.common.client     raise HTTPError(http_error_msg, response=self)
+2016-06-17 17:36:08.802 TRACE networking_odl.common.client HTTPError: 500 Server Error: Server Error for url: http://192.168.11.216:8181/controller/nb/v2/neutron/networks
+2016-06-17 17:36:08.802 TRACE networking_odl.common.client 
+2016-06-17 17:36:08.805 DEBUG oslo_concurrency.lockutils [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Lock "odl-sync-full" released by "networking_odl.ml2.mech_driver.sync_full" :: held 2.010s from (pid=15343) inner /usr/local/lib/python2.7/dist-packages/oslo_concurrency/lockutils.py:265
+2016-06-17 17:36:08.806 ERROR neutron.plugins.ml2.managers [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Mechanism driver 'opendaylight' failed in create_network_postcommit
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers Traceback (most recent call last):
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers   File "/opt/stack/neutron/neutron/plugins/ml2/managers.py", line 404, in _call_on_drivers
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers     getattr(driver.obj, method_name)(context)
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/ml2/mech_driver.py", line 422, in create_network_postcommit
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers     context)
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/ml2/mech_driver.py", line 262, in synchronize
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers     self.sync_full(context._plugin)
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers   File "/usr/local/lib/python2.7/dist-packages/oslo_concurrency/lockutils.py", line 254, in inner
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers     return f(*args, **kwargs)
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/ml2/mech_driver.py", line 326, in sync_full
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers     self.sync_resources(plugin, dbcontext, collection_name)
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/ml2/mech_driver.py", line 304, in sync_resources
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers     {key: to_be_synced})
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/common/client.py", line 72, in sendjson
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers     return self._check_rensponse(self.request(method, urlpath, data))
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/common/client.py", line 90, in _check_rensponse
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers     {'e': error, 'text': rensponse.text}, exc_info=1)
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers   File "/usr/local/lib/python2.7/dist-packages/oslo_utils/excutils.py", line 204, in __exit__
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers     six.reraise(self.type_, self.value, self.tb)
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/common/client.py", line 86, in _check_rensponse
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers     rensponse.raise_for_status()
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers   File "/usr/local/lib/python2.7/dist-packages/requests/models.py", line 837, in raise_for_status
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers     raise HTTPError(http_error_msg, response=self)
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers HTTPError: 500 Server Error: Server Error for url: http://192.168.11.216:8181/controller/nb/v2/neutron/networks
+2016-06-17 17:36:08.806 TRACE neutron.plugins.ml2.managers 
+2016-06-17 17:36:08.835 ERROR neutron.plugins.ml2.plugin [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] mechanism_manager.create_network_postcommit failed, deleting network '73d70713-3c20-441e-9d63-10d47a81ff05'
+2016-06-17 17:36:08.835 DEBUG neutron.plugins.ml2.plugin [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Deleting network 73d70713-3c20-441e-9d63-10d47a81ff05 from (pid=15343) delete_network /opt/stack/neutron/neutron/plugins/ml2/plugin.py:746
+2016-06-17 17:36:08.846 DEBUG neutron.plugins.ml2.plugin [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Ports to auto-delete: [] from (pid=15343) delete_network /opt/stack/neutron/neutron/plugins/ml2/plugin.py:768
+2016-06-17 17:36:08.848 DEBUG neutron.plugins.ml2.plugin [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Subnets to auto-delete: [] from (pid=15343) delete_network /opt/stack/neutron/neutron/plugins/ml2/plugin.py:781
+2016-06-17 17:36:08.866 INFO neutron.tests.unit.plugins.ml2.drivers.mechanism_logger [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] delete_network_precommit called with network settings {'status': u'ACTIVE', 'subnets': [], 'name': u'net01', 'provider:physical_network': None, 'admin_state_up': True, 'tenant_id': u'58fac5df091f413294f16b478dbd955b', 'mtu': 1450, 'router:external': False, 'port_security_enabled': True, 'vlan_transparent': None, 'shared': False, 'provider:network_type': u'vxlan', 'id': u'73d70713-3c20-441e-9d63-10d47a81ff05', 'provider:segmentation_id': 1004} (original settings None) and network segments [{'segmentation_id': 1004, 'physical_network': None, 'id': u'5dba4dbc-0e7c-41d4-a9b0-715235ab6f66', 'network_type': u'vxlan'}]
+2016-06-17 17:36:08.870 DEBUG neutron.plugins.ml2.drivers.type_tunnel [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Releasing vxlan tunnel 1004 to pool from (pid=15343) release_segment /opt/stack/neutron/neutron/plugins/ml2/drivers/type_tunnel.py:230
+2016-06-17 17:36:08.883 DEBUG neutron.plugins.ml2.plugin [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Deleting network record <neutron.db.models_v2.Network[object at 7fa8ff10bd50] {tenant_id=u'58fac5df091f413294f16b478dbd955b', id=u'73d70713-3c20-441e-9d63-10d47a81ff05', name=u'net01', status=u'ACTIVE', admin_state_up=True, mtu=1450, vlan_transparent=None}> from (pid=15343) delete_network /opt/stack/neutron/neutron/plugins/ml2/plugin.py:793
+2016-06-17 17:36:08.883 DEBUG neutron.plugins.ml2.plugin [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Committing transaction from (pid=15343) delete_network /opt/stack/neutron/neutron/plugins/ml2/plugin.py:798
+2016-06-17 17:36:08.905 DEBUG oslo_concurrency.lockutils [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Lock "odl-sync-full" acquired by "networking_odl.ml2.mech_driver.sync_full" :: waited 0.000s from (pid=15343) inner /usr/local/lib/python2.7/dist-packages/oslo_concurrency/lockutils.py:253
+/usr/local/lib/python2.7/dist-packages/sqlalchemy/sql/default_comparator.py:153: SAWarning: The IN-predicate on "ml2_network_segments.network_id" was invoked with an empty sequence. This results in a contradiction, which nonetheless can be expensive to evaluate.  Consider alternative strategies for improved performance.
+  'strategies for improved performance.' % expr)
+2016-06-17 17:36:08.955 DEBUG networking_odl.common.client [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Sending METHOD (get) URL (http://192.168.11.216:8181/controller/nb/v2/neutron/security-groups/607a6231-e1c3-4c55-820e-16de034f8d37) JSON (None) from (pid=15343) request /opt/stack/networking-odl/networking_odl/common/client.py:64
+2016-06-17 17:36:08.996 DEBUG networking_odl.common.client [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Exception from ODL: 404 Client Error: Not Found for url: http://192.168.11.216:8181/controller/nb/v2/neutron/security-groups/607a6231-e1c3-4c55-820e-16de034f8d37 Security Group UUID does not exist. from (pid=15343) _check_rensponse /opt/stack/networking-odl/networking_odl/common/client.py:90
+2016-06-17 17:36:08.996 TRACE networking_odl.common.client Traceback (most recent call last):
+2016-06-17 17:36:08.996 TRACE networking_odl.common.client   File "/opt/stack/networking-odl/networking_odl/common/client.py", line 86, in _check_rensponse
+2016-06-17 17:36:08.996 TRACE networking_odl.common.client     rensponse.raise_for_status()
+2016-06-17 17:36:08.996 TRACE networking_odl.common.client   File "/usr/local/lib/python2.7/dist-packages/requests/models.py", line 837, in raise_for_status
+2016-06-17 17:36:08.996 TRACE networking_odl.common.client     raise HTTPError(http_error_msg, response=self)
+2016-06-17 17:36:08.996 TRACE networking_odl.common.client HTTPError: 404 Client Error: Not Found for url: http://192.168.11.216:8181/controller/nb/v2/neutron/security-groups/607a6231-e1c3-4c55-820e-16de034f8d37
+2016-06-17 17:36:08.996 TRACE networking_odl.common.client 
+2016-06-17 17:36:08.997 DEBUG networking_odl.common.client [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Sending METHOD (post) URL (http://192.168.11.216:8181/controller/nb/v2/neutron/security-groups) JSON ({
+  "security_group": [
+    {
+      "tenant_id": "58fac5df091f413294f16b478dbd955b", 
+      "description": "Default security group", 
+      "id": "607a6231-e1c3-4c55-820e-16de034f8d37", 
+      "security_group_rules": [
+        {
+          "remote_group_id": "607a6231-e1c3-4c55-820e-16de034f8d37", 
+          "direction": "ingress", 
+          "remote_ip_prefix": null, 
+          "protocol": null, 
+          "ethertype": "IPv6", 
+          "tenant_id": "58fac5df091f413294f16b478dbd955b", 
+          "port_range_max": null, 
+          "port_range_min": null, 
+          "id": "195a0470-24ee-4d84-9fd7-5d8203a84c34", 
+          "security_group_id": "607a6231-e1c3-4c55-820e-16de034f8d37"
+        }, 
+        {
+          "remote_group_id": "607a6231-e1c3-4c55-820e-16de034f8d37", 
+          "direction": "ingress", 
+          "remote_ip_prefix": null, 
+          "protocol": null, 
+          "ethertype": "IPv4", 
+          "tenant_id": "58fac5df091f413294f16b478dbd955b", 
+          "port_range_max": null, 
+          "port_range_min": null, 
+          "id": "4841052d-4b5d-41b3-afe2-b1be9adeb381", 
+          "security_group_id": "607a6231-e1c3-4c55-820e-16de034f8d37"
+        }, 
+        {
+          "remote_group_id": null, 
+          "direction": "egress", 
+          "remote_ip_prefix": null, 
+          "protocol": null, 
+          "ethertype": "IPv4", 
+          "tenant_id": "58fac5df091f413294f16b478dbd955b", 
+          "port_range_max": null, 
+          "port_range_min": null, 
+          "id": "b8d352b8-fcf9-4ead-b59a-8438d8ccb2c9", 
+          "security_group_id": "607a6231-e1c3-4c55-820e-16de034f8d37"
+        }, 
+        {
+          "remote_group_id": null, 
+          "direction": "egress", 
+          "remote_ip_prefix": null, 
+          "protocol": null, 
+          "ethertype": "IPv6", 
+          "tenant_id": "58fac5df091f413294f16b478dbd955b", 
+          "port_range_max": null, 
+          "port_range_min": null, 
+          "id": "fa70c6b8-5b6a-44d1-8e70-3ba57b1e66c2", 
+          "security_group_id": "607a6231-e1c3-4c55-820e-16de034f8d37"
+        }
+      ], 
+      "name": "default"
+    }
+  ]
+}) from (pid=15343) request /opt/stack/networking-odl/networking_odl/common/client.py:64
+2016-06-17 17:36:09.074 DEBUG networking_odl.common.client [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Exception from ODL: 500 Server Error: Server Error for url: http://192.168.11.216:8181/controller/nb/v2/neutron/security-groups <html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+<title>Error 500 Server Error</title>
+</head>
+<body><h2>HTTP ERROR 500</h2>
+<p>Problem accessing /controller/nb/v2/neutron/security-groups. Reason:
+<pre>    Server Error</pre></p><h3>Caused by:</h3><pre>java.lang.NoClassDefFoundError: org/eclipse/persistence/internal/libraries/antlr/runtime/tree/Tree
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.getNewXMLReader(SAXUnmarshaller.java:200)
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.getXMLReader(SAXUnmarshaller.java:188)
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.unmarshal(SAXUnmarshaller.java:425)
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.unmarshal(SAXUnmarshaller.java:375)
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.unmarshal(SAXUnmarshaller.java:705)
+        at org.eclipse.persistence.oxm.XMLUnmarshaller.unmarshal(XMLUnmarshaller.java:655)
+        at org.eclipse.persistence.jaxb.JAXBUnmarshaller.unmarshal(JAXBUnmarshaller.java:301)
+        at org.eclipse.persistence.jaxb.rs.MOXyJsonProvider.readFrom(MOXyJsonProvider.java:613)
+        at com.sun.jersey.spi.container.ContainerRequest.getEntity(ContainerRequest.java:488)
+        at com.sun.jersey.server.impl.model.method.dispatch.EntityParamDispatchProvider$EntityInjectable.getValue(EntityParamDispatchProvider.java:123)
+        at com.sun.jersey.server.impl.inject.InjectableValuesProvider.getInjectableValues(InjectableValuesProvider.java:46)
+        at com.sun.jersey.server.impl.model.method.dispatch.AbstractResourceMethodDispatchProvider$EntityParamInInvoker.getParams(AbstractResourceMethodDispatchProvider.java:153)
+        at com.sun.jersey.server.impl.model.method.dispatch.AbstractResourceMethodDispatchProvider$ResponseOutInvoker._dispatch(AbstractResourceMethodDispatchProvider.java:203)
+        at com.sun.jersey.server.impl.model.method.dispatch.ResourceJavaMethodDispatcher.dispatch(ResourceJavaMethodDispatcher.java:75)
+        at com.sun.jersey.server.impl.uri.rules.HttpMethodRule.accept(HttpMethodRule.java:302)
+        at com.sun.jersey.server.impl.uri.rules.ResourceClassRule.accept(ResourceClassRule.java:108)
+        at com.sun.jersey.server.impl.uri.rules.RightHandPathRule.accept(RightHandPathRule.java:147)
+        at com.sun.jersey.server.impl.uri.rules.RootResourceClassesRule.accept(RootResourceClassesRule.java:84)
+        at com.sun.jersey.server.impl.application.WebApplicationImpl._handleRequest(WebApplicationImpl.java:1511)
+        at com.sun.jersey.server.impl.application.WebApplicationImpl._handleRequest(WebApplicationImpl.java:1442)
+        at com.sun.jersey.server.impl.application.WebApplicationImpl.handleRequest(WebApplicationImpl.java:1391)
+        at com.sun.jersey.server.impl.application.WebApplicationImpl.handleRequest(WebApplicationImpl.java:1381)
+        at com.sun.jersey.spi.container.servlet.WebComponent.service(WebComponent.java:416)
+        at com.sun.jersey.spi.container.servlet.ServletContainer.service(ServletContainer.java:538)
+        at com.sun.jersey.spi.container.servlet.ServletContainer.service(ServletContainer.java:716)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:668)
+        at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:684)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1496)
+        at org.eclipse.jetty.servlets.CrossOriginFilter.handle(CrossOriginFilter.java:247)
+        at org.eclipse.jetty.servlets.CrossOriginFilter.doFilter(CrossOriginFilter.java:210)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1467)
+        at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:501)
+        at org.ops4j.pax.web.service.jetty.internal.HttpServiceServletHandler.doHandle(HttpServiceServletHandler.java:69)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:137)
+        at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:557)
+        at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:231)
+        at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1086)
+        at org.ops4j.pax.web.service.jetty.internal.HttpServiceContext.doHandle(HttpServiceContext.java:240)
+        at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:429)
+        at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:193)
+        at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1020)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:135)
+        at org.ops4j.pax.web.service.jetty.internal.JettyServerHandlerCollection.handle(JettyServerHandlerCollection.java:75)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:116)
+        at org.eclipse.jetty.server.Server.handle(Server.java:370)
+        at org.eclipse.jetty.server.AbstractHttpConnection.handleRequest(AbstractHttpConnection.java:494)
+        at org.eclipse.jetty.server.AbstractHttpConnection.content(AbstractHttpConnection.java:982)
+        at org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.content(AbstractHttpConnection.java:1043)
+        at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:865)
+        at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:240)
+        at org.eclipse.jetty.server.AsyncHttpConnection.handle(AsyncHttpConnection.java:82)
+        at org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle(SelectChannelEndPoint.java:696)
+        at org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run(SelectChannelEndPoint.java:53)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:608)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:543)
+        at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.ClassNotFoundException: org.eclipse.persistence.internal.libraries.antlr.runtime.tree.Tree
+        at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:501)
+        at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+        at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+        at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+        ... 56 more
+</pre>
+<h3>Caused by:</h3><pre>java.lang.ClassNotFoundException: org.eclipse.persistence.internal.libraries.antlr.runtime.tree.Tree
+        at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:501)
+        at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+        at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+        at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.getNewXMLReader(SAXUnmarshaller.java:200)
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.getXMLReader(SAXUnmarshaller.java:188)
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.unmarshal(SAXUnmarshaller.java:425)
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.unmarshal(SAXUnmarshaller.java:375)
+        at org.eclipse.persistence.internal.oxm.record.SAXUnmarshaller.unmarshal(SAXUnmarshaller.java:705)
+        at org.eclipse.persistence.oxm.XMLUnmarshaller.unmarshal(XMLUnmarshaller.java:655)
+        at org.eclipse.persistence.jaxb.JAXBUnmarshaller.unmarshal(JAXBUnmarshaller.java:301)
+        at org.eclipse.persistence.jaxb.rs.MOXyJsonProvider.readFrom(MOXyJsonProvider.java:613)
+        at com.sun.jersey.spi.container.ContainerRequest.getEntity(ContainerRequest.java:488)
+        at com.sun.jersey.server.impl.model.method.dispatch.EntityParamDispatchProvider$EntityInjectable.getValue(EntityParamDispatchProvider.java:123)
+        at com.sun.jersey.server.impl.inject.InjectableValuesProvider.getInjectableValues(InjectableValuesProvider.java:46)
+        at com.sun.jersey.server.impl.model.method.dispatch.AbstractResourceMethodDispatchProvider$EntityParamInInvoker.getParams(AbstractResourceMethodDispatchProvider.java:153)
+        at com.sun.jersey.server.impl.model.method.dispatch.AbstractResourceMethodDispatchProvider$ResponseOutInvoker._dispatch(AbstractResourceMethodDispatchProvider.java:203)
+        at com.sun.jersey.server.impl.model.method.dispatch.ResourceJavaMethodDispatcher.dispatch(ResourceJavaMethodDispatcher.java:75)
+        at com.sun.jersey.server.impl.uri.rules.HttpMethodRule.accept(HttpMethodRule.java:302)
+        at com.sun.jersey.server.impl.uri.rules.ResourceClassRule.accept(ResourceClassRule.java:108)
+        at com.sun.jersey.server.impl.uri.rules.RightHandPathRule.accept(RightHandPathRule.java:147)
+        at com.sun.jersey.server.impl.uri.rules.RootResourceClassesRule.accept(RootResourceClassesRule.java:84)
+        at com.sun.jersey.server.impl.application.WebApplicationImpl._handleRequest(WebApplicationImpl.java:1511)
+        at com.sun.jersey.server.impl.application.WebApplicationImpl._handleRequest(WebApplicationImpl.java:1442)
+        at com.sun.jersey.server.impl.application.WebApplicationImpl.handleRequest(WebApplicationImpl.java:1391)
+        at com.sun.jersey.server.impl.application.WebApplicationImpl.handleRequest(WebApplicationImpl.java:1381)
+        at com.sun.jersey.spi.container.servlet.WebComponent.service(WebComponent.java:416)
+        at com.sun.jersey.spi.container.servlet.ServletContainer.service(ServletContainer.java:538)
+        at com.sun.jersey.spi.container.servlet.ServletContainer.service(ServletContainer.java:716)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:668)
+        at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:684)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1496)
+        at org.eclipse.jetty.servlets.CrossOriginFilter.handle(CrossOriginFilter.java:247)
+        at org.eclipse.jetty.servlets.CrossOriginFilter.doFilter(CrossOriginFilter.java:210)
+        at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1467)
+        at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:501)
+        at org.ops4j.pax.web.service.jetty.internal.HttpServiceServletHandler.doHandle(HttpServiceServletHandler.java:69)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:137)
+        at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:557)
+        at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:231)
+        at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1086)
+        at org.ops4j.pax.web.service.jetty.internal.HttpServiceContext.doHandle(HttpServiceContext.java:240)
+        at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:429)
+        at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:193)
+        at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1020)
+        at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:135)
+        at org.ops4j.pax.web.service.jetty.internal.JettyServerHandlerCollection.handle(JettyServerHandlerCollection.java:75)
+        at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:116)
+        at org.eclipse.jetty.server.Server.handle(Server.java:370)
+        at org.eclipse.jetty.server.AbstractHttpConnection.handleRequest(AbstractHttpConnection.java:494)
+        at org.eclipse.jetty.server.AbstractHttpConnection.content(AbstractHttpConnection.java:982)
+        at org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.content(AbstractHttpConnection.java:1043)
+        at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:865)
+        at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:240)
+        at org.eclipse.jetty.server.AsyncHttpConnection.handle(AsyncHttpConnection.java:82)
+        at org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle(SelectChannelEndPoint.java:696)
+        at org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run(SelectChannelEndPoint.java:53)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:608)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:543)
+        at java.lang.Thread.run(Thread.java:745)
+</pre>
+<hr /><i><small>Powered by Jetty://</small></i><br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+<br/>                                                
+
+</body>
+</html>
+ from (pid=15343) _check_rensponse /opt/stack/networking-odl/networking_odl/common/client.py:90
+2016-06-17 17:36:09.074 TRACE networking_odl.common.client Traceback (most recent call last):
+2016-06-17 17:36:09.074 TRACE networking_odl.common.client   File "/opt/stack/networking-odl/networking_odl/common/client.py", line 86, in _check_rensponse
+2016-06-17 17:36:09.074 TRACE networking_odl.common.client     rensponse.raise_for_status()
+2016-06-17 17:36:09.074 TRACE networking_odl.common.client   File "/usr/local/lib/python2.7/dist-packages/requests/models.py", line 837, in raise_for_status
+2016-06-17 17:36:09.074 TRACE networking_odl.common.client     raise HTTPError(http_error_msg, response=self)
+2016-06-17 17:36:09.074 TRACE networking_odl.common.client HTTPError: 500 Server Error: Server Error for url: http://192.168.11.216:8181/controller/nb/v2/neutron/security-groups
+2016-06-17 17:36:09.074 TRACE networking_odl.common.client 
+2016-06-17 17:36:09.076 DEBUG oslo_concurrency.lockutils [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Lock "odl-sync-full" released by "networking_odl.ml2.mech_driver.sync_full" :: held 0.171s from (pid=15343) inner /usr/local/lib/python2.7/dist-packages/oslo_concurrency/lockutils.py:265
+2016-06-17 17:36:09.077 ERROR neutron.plugins.ml2.managers [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Mechanism driver 'opendaylight' failed in delete_network_postcommit
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers Traceback (most recent call last):
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers   File "/opt/stack/neutron/neutron/plugins/ml2/managers.py", line 404, in _call_on_drivers
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers     getattr(driver.obj, method_name)(context)
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/ml2/mech_driver.py", line 430, in delete_network_postcommit
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers     context)
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/ml2/mech_driver.py", line 262, in synchronize
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers     self.sync_full(context._plugin)
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers   File "/usr/local/lib/python2.7/dist-packages/oslo_concurrency/lockutils.py", line 254, in inner
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers     return f(*args, **kwargs)
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/ml2/mech_driver.py", line 326, in sync_full
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers     self.sync_resources(plugin, dbcontext, collection_name)
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/ml2/mech_driver.py", line 304, in sync_resources
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers     {key: to_be_synced})
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/common/client.py", line 72, in sendjson
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers     return self._check_rensponse(self.request(method, urlpath, data))
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/common/client.py", line 90, in _check_rensponse
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers     {'e': error, 'text': rensponse.text}, exc_info=1)
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers   File "/usr/local/lib/python2.7/dist-packages/oslo_utils/excutils.py", line 204, in __exit__
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers     six.reraise(self.type_, self.value, self.tb)
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers   File "/opt/stack/networking-odl/networking_odl/common/client.py", line 86, in _check_rensponse
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers     rensponse.raise_for_status()
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers   File "/usr/local/lib/python2.7/dist-packages/requests/models.py", line 837, in raise_for_status
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers     raise HTTPError(http_error_msg, response=self)
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers HTTPError: 500 Server Error: Server Error for url: http://192.168.11.216:8181/controller/nb/v2/neutron/security-groups
+2016-06-17 17:36:09.077 TRACE neutron.plugins.ml2.managers 
+2016-06-17 17:36:09.079 INFO neutron.tests.unit.plugins.ml2.drivers.mechanism_logger [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] delete_network_postcommit called with network settings {'status': u'ACTIVE', 'subnets': [], 'name': u'net01', 'provider:physical_network': None, 'admin_state_up': True, 'tenant_id': u'58fac5df091f413294f16b478dbd955b', 'mtu': 1450, 'router:external': False, 'port_security_enabled': True, 'vlan_transparent': None, 'shared': False, 'provider:network_type': u'vxlan', 'id': u'73d70713-3c20-441e-9d63-10d47a81ff05', 'provider:segmentation_id': 1004} (original settings None) and network segments [{'segmentation_id': 1004, 'physical_network': None, 'id': u'5dba4dbc-0e7c-41d4-a9b0-715235ab6f66', 'network_type': u'vxlan'}]
+2016-06-17 17:36:09.079 ERROR neutron.plugins.ml2.plugin [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] mechanism_manager.delete_network_postcommit failed
+2016-06-17 17:36:09.080 DEBUG oslo_messaging._drivers.amqp [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Pool creating new connection from (pid=15343) create /usr/local/lib/python2.7/dist-packages/oslo_messaging/_drivers/amqp.py:103
+2016-06-17 17:36:09.082 INFO oslo.messaging._drivers.impl_rabbit [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Connecting to AMQP server on 192.168.11.216:5672
+2016-06-17 17:36:09.099 INFO oslo.messaging._drivers.impl_rabbit [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] Connected to AMQP server on 192.168.11.216:5672
+2016-06-17 17:36:09.138 ERROR neutron.api.v2.resource [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] create failed
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource Traceback (most recent call last):
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource   File "/opt/stack/neutron/neutron/api/v2/resource.py", line 83, in resource
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource     result = method(request=request, **args)
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource   File "/opt/stack/neutron/neutron/api/v2/base.py", line 410, in create
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource     return self._create(request, body, **kwargs)
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource   File "/usr/local/lib/python2.7/dist-packages/oslo_db/api.py", line 146, in wrapper
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource     ectxt.value = e.inner_exc
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource   File "/usr/local/lib/python2.7/dist-packages/oslo_utils/excutils.py", line 204, in __exit__
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource     six.reraise(self.type_, self.value, self.tb)
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource   File "/usr/local/lib/python2.7/dist-packages/oslo_db/api.py", line 136, in wrapper
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource     return f(*args, **kwargs)
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource   File "/opt/stack/neutron/neutron/api/v2/base.py", line 521, in _create
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource     obj = do_create(body)
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource   File "/opt/stack/neutron/neutron/api/v2/base.py", line 503, in do_create
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource     request.context, reservation.reservation_id)
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource   File "/usr/local/lib/python2.7/dist-packages/oslo_utils/excutils.py", line 204, in __exit__
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource     six.reraise(self.type_, self.value, self.tb)
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource   File "/opt/stack/neutron/neutron/api/v2/base.py", line 496, in do_create
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource     return obj_creator(request.context, **kwargs)
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource   File "/opt/stack/neutron/neutron/plugins/ml2/plugin.py", line 648, in create_network
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource     self.delete_network(context, result['id'])
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource   File "/usr/local/lib/python2.7/dist-packages/oslo_utils/excutils.py", line 204, in __exit__
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource     six.reraise(self.type_, self.value, self.tb)
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource   File "/opt/stack/neutron/neutron/plugins/ml2/plugin.py", line 643, in create_network
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource     self.mechanism_manager.create_network_postcommit(mech_context)
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource   File "/opt/stack/neutron/neutron/plugins/ml2/managers.py", line 444, in create_network_postcommit
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource     self._call_on_drivers("create_network_postcommit", context)
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource   File "/opt/stack/neutron/neutron/plugins/ml2/managers.py", line 415, in _call_on_drivers
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource     method=method_name
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource MechanismDriverError: create_network_postcommit failed.
+2016-06-17 17:36:09.138 TRACE neutron.api.v2.resource 
+2016-06-17 17:36:09.156 INFO neutron.wsgi [req-6fa4b4d7-a4ca-4a4a-97f5-9437a4b30d58 demo 58fac5df091f413294f16b478dbd955b] 192.168.11.216 - - [17/Jun/2016 17:36:09] "POST /v2.0/networks.json HTTP/1.1" 500 345 2.854169
+
