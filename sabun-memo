@@ -37,7 +37,5 @@ Successfully installed networking-odl
 
 stack.sh 実施時に、screen-karaf.logを作成していない。
 ないので、それが原因で、net01は作成されない。
-ODL_MODE external  はDevStackでODLを管理しないので、動作に問題はないのかと思われる。
-
 
 
