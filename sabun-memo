@@ -1,0 +1,43 @@
+allinone -stack.sh の動き
+stack.sh でBeryllium0.4.1-SR1をダウンロード
+
+allinoneはenable_service odl-server odl-computeになる。
+
+
+++/opt/stack/networking-odl/devstack/settings:source:50  enable_service odl-server odl-compute
++functions-common:verify_disabled_services:2112  [[ ,q-agt, =~ ,odl-server, ]]
++++tools/install_prereqs.sh:source:64        get_packages general,key,n-api,n-cond,n-sch,n-novnc,n-crt,n-cauth,g-api,g-reg,horizon,rabbit,mysql,q-svc,q-dhcp,q-meta,q-l3,odl-server,odl-compute
+
+Successfully installed networking-odl-2.0.1.dev3
+openjdk-8-jre インストール
+distribution-karaf-0.4.1-Beryllium-SR1 をダウンロード unzipで解凍
+インストール
+
+ODL_NETVIRT_KARAF_FEATURE=odl-restconf-all,odl-aaa-authn,odl-dlux-core,odl-mdsal-apidocs,odl-ovsdb-openstack
+
+allinoneは screen-karaf.logを作成している
+externalodlは 作成していない。
+
+neutron net-create net01を実行したあと、
+
+2016-06-24 12:00:32,702 | INFO  | p2090438530-1538 | NeutronNetworkDummyProvider      | 277 - org.opendaylight.neutron.dummyprovider - 0.6.1.Beryllium-SR1 | NeutronNetwork [networkUUID=cc2b1d2c-485c-47c8-91db-2cb022549274, networkName=net01, adminStateUp=true, shared=false, tenantID=899c9c7197194404b97d34e34f46050c, routerExternal=false, providerNetworkType=vxlan, providerPhysicalNetwork=null, providerSegmentationID=1097, status=ACTIVE, segments = null]
+2016-06-24 12:00:32,719 | INFO  | -dispatcher-1091 | AbstractHandler                  | 275 - org.opendaylight.ovsdb.openstack.net-virt - 1.2.2.Beryllium-SR1 | enqueueEvent: evenDispatcher: org.opendaylight.ovsdb.openstack.netvirt.impl.EventDispatcherImpl@1195e1af - NorthboundEvent [handler=NEUTRON_NETWORK, action=ADD, port=null, subnet=null, router=null, routerInterface=null, floatingIP=null, network=NeutronNetwork [networkUUID=cc2b1d2c-485c-47c8-91db-2cb022549274, networkName=net01, adminStateUp=true, shared=false, tenantID=899c9c71-9719-4404-b97d-34e34f46050c, routerExternal=false, providerNetworkType=vxlan, providerPhysicalNetwork=null, providerSegmentationID=1097, status=ACTIVE, segments = []], loadBalancer=null, loadBalancerPool=null, loadBalancerPoolMember=null, neutronsecurityRule=null]
+
+のlogを出している。
+
+-----------------------------------------------
+external stack.sh
+
+stack.sh 実施前にBeryllium0.4.1-SR1をダウンロード
+externakodlは、 enable_service odl-neutron odl-computeになる。
+++/opt/stack/networking-odl/devstack/settings:source:53  enable_service odl-neutron odl-compute
++functions-common:verify_disabled_services:2112  [[ ,q-agt, =~ ,odl-neutron, ]]
++++tools/install_prereqs.sh:source:64        get_packages general,key,n-api,n-cond,n-sch,n-novnc,n-crt,n-cauth,g-api,g-reg,horizon,rabbit,mysql,q-svc,q-dhcp,q-meta,q-l3,odl-neutron,odl-compute
+Successfully installed networking-odl
+
+stack.sh 実施時に、screen-karaf.logを作成していない。
+ないので、それが原因で、net01は作成されない。
+ODL_MODE external  はDevStackでODLを管理しないので、動作に問題はないのかと思われる。
+
+
+
