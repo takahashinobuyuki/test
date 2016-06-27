@@ -1,0 +1,117 @@
+externalodl
+
+neutron -v net-create net01
+
+DEBUG: stevedore.extension found extension EntryPoint.parse('v2token = keystoneauth1.loading._plugins.identity.v2:Token')
+DEBUG: stevedore.extension found extension EntryPoint.parse('admin_token = keystoneauth1.loading._plugins.admin_token:AdminToken')
+DEBUG: stevedore.extension found extension EntryPoint.parse('v3oidcauthcode = keystoneauth1.loading._plugins.identity.v3:OpenIDConnectAuthorizationCode')
+DEBUG: stevedore.extension found extension EntryPoint.parse('v2password = keystoneauth1.loading._plugins.identity.v2:Password')
+DEBUG: stevedore.extension found extension EntryPoint.parse('v3password = keystoneauth1.loading._plugins.identity.v3:Password')
+DEBUG: stevedore.extension found extension EntryPoint.parse('v3oidcpassword = keystoneauth1.loading._plugins.identity.v3:OpenIDConnectPassword')
+DEBUG: stevedore.extension found extension EntryPoint.parse('token = keystoneauth1.loading._plugins.identity.generic:Token')
+DEBUG: stevedore.extension found extension EntryPoint.parse('v3token = keystoneauth1.loading._plugins.identity.v3:Token')
+DEBUG: stevedore.extension found extension EntryPoint.parse('password = keystoneauth1.loading._plugins.identity.generic:Password')
+DEBUG: stevedore.extension found extension EntryPoint.parse('table = cliff.formatters.table:TableFormatter')
+DEBUG: stevedore.extension found extension EntryPoint.parse('json = cliff.formatters.json_format:JSONFormatter')
+DEBUG: stevedore.extension found extension EntryPoint.parse('shell = cliff.formatters.shell:ShellFormatter')
+DEBUG: stevedore.extension found extension EntryPoint.parse('value = cliff.formatters.value:ValueFormatter')
+DEBUG: stevedore.extension found extension EntryPoint.parse('yaml = cliff.formatters.yaml_format:YAMLFormatter')
+DEBUG: stevedore.extension found extension EntryPoint.parse('yaml = clifftablib.formatters:YamlFormatter')
+DEBUG: stevedore.extension found extension EntryPoint.parse('json = clifftablib.formatters:JsonFormatter')
+DEBUG: stevedore.extension found extension EntryPoint.parse('html = clifftablib.formatters:HtmlFormatter')
+DEBUG: neutronclient.neutron.v2_0.network.CreateNetwork run(Namespace(admin_state=True, availability_zone_hints=None, columns=[], dns_domain=None, formatter='table', max_width=0, name=u'net01', noindent=False, prefix='', provider:network_type=None, provider:physical_network=None, provider:segmentation_id=None, qos_policy=None, request_format='json', tenant_id=None, variables=[]))
+DEBUG: keystoneauth.session REQ: curl -g -i -X GET http://192.168.11.216:5000/v2.0 -H "Accept: application/json" -H "User-Agent: keystoneauth1/2.4.1 python-requests/2.9.1 CPython/2.7.6"
+DEBUG: keystoneauth.session RESP: [200] Content-Length: 340 Vary: X-Auth-Token Keep-Alive: timeout=5, max=100 Server: Apache/2.4.7 (Ubuntu) Connection: Keep-Alive Date: Mon, 27 Jun 2016 07:28:33 GMT Content-Type: application/json x-openstack-request-id: req-792f647e-1fbe-4548-9307-5c84d576601d 
+RESP BODY: {"version": {"status": "stable", "updated": "2014-04-17T00:00:00Z", "media-types": [{"base": "application/json", "type": "application/vnd.openstack.identity-v2.0+json"}], "id": "v2.0", "links": [{"href": "http://192.168.11.216:5000/v2.0/", "rel": "self"}, {"href": "http://docs.openstack.org/", "type": "text/html", "rel": "describedby"}]}}
+
+DEBUG: keystoneauth.identity.v2 Making authentication request to http://192.168.11.216:5000/v2.0/tokens
+DEBUG: keystoneauth.session REQ: curl -g -i -X POST http://192.168.11.216:9696/v2.0/networks.json -H "User-Agent: python-neutronclient" -H "Content-Type: application/json" -H "Accept: application/json" -H "X-Auth-Token: {SHA1}addcdd083d1fc4d3507ec58df57e9f96df553f5b" -d '{"network": {"name": "net01", "admin_state_up": true}}'
+DEBUG: keystoneauth.session RESP: [500] Date: Mon, 27 Jun 2016 07:28:38 GMT Connection: keep-alive Content-Type: application/json; charset=UTF-8 Content-Length: 112 X-Openstack-Request-Id: req-9ab0d239-25d0-452c-8cca-89a1cc133788 
+RESP BODY: {"NeutronError": {"message": "create_network_postcommit failed.", "type": "MechanismDriverError", "detail": ""}}
+
+DEBUG: neutronclient.v2_0.client Error message: {"NeutronError": {"message": "create_network_postcommit failed.", "type": "MechanismDriverError", "detail": ""}}
+ERROR: neutronclient.shell create_network_postcommit failed.
+Neutron server returns request_ids: ['req-9ab0d239-25d0-452c-8cca-89a1cc133788']
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/neutronclient/shell.py", line 879, in run_subcommand
+    return run_command(cmd, cmd_parser, sub_argv)
+  File "/usr/local/lib/python2.7/dist-packages/neutronclient/shell.py", line 114, in run_command
+    return cmd.run(known_args)
+  File "/usr/local/lib/python2.7/dist-packages/neutronclient/neutron/v2_0/__init__.py", line 403, in run
+    return super(NeutronCommand, self).run(parsed_args)
+  File "/usr/local/lib/python2.7/dist-packages/cliff/display.py", line 79, in run
+    column_names, data = self.take_action(parsed_args)
+  File "/usr/local/lib/python2.7/dist-packages/neutronclient/neutron/v2_0/__init__.py", line 486, in take_action
+    data = obj_creator(body)
+  File "/usr/local/lib/python2.7/dist-packages/neutronclient/v2_0/client.py", line 97, in with_params
+    ret = self.function(instance, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/neutronclient/v2_0/client.py", line 681, in create_network
+    return self.post(self.networks_path, body=body)
+  File "/usr/local/lib/python2.7/dist-packages/neutronclient/v2_0/client.py", line 363, in post
+    headers=headers, params=params)
+  File "/usr/local/lib/python2.7/dist-packages/neutronclient/v2_0/client.py", line 298, in do_request
+    self._handle_fault_response(status_code, replybody, resp)
+  File "/usr/local/lib/python2.7/dist-packages/neutronclient/v2_0/client.py", line 273, in _handle_fault_response
+    exception_handler_v20(status_code, error_body)
+  File "/usr/local/lib/python2.7/dist-packages/neutronclient/v2_0/client.py", line 84, in exception_handler_v20
+    request_ids=request_ids)
+InternalServerError: create_network_postcommit failed.
+Neutron server returns request_ids: ['req-9ab0d239-25d0-452c-8cca-89a1cc133788']
+
+-----------------------------------------------------------------------------------------
+allinone
+
+DEBUG: stevedore.extension found extension EntryPoint.parse('v2token = keystoneauth1.loading._plugins.identity.v2:Token')
+DEBUG: stevedore.extension found extension EntryPoint.parse('admin_token = keystoneauth1.loading._plugins.admin_token:AdminToken')
+DEBUG: stevedore.extension found extension EntryPoint.parse('v3oidcauthcode = keystoneauth1.loading._plugins.identity.v3:OpenIDConnectAuthorizationCode')
+DEBUG: stevedore.extension found extension EntryPoint.parse('v2password = keystoneauth1.loading._plugins.identity.v2:Password')
+DEBUG: stevedore.extension found extension EntryPoint.parse('v3password = keystoneauth1.loading._plugins.identity.v3:Password')
+DEBUG: stevedore.extension found extension EntryPoint.parse('v3oidcpassword = keystoneauth1.loading._plugins.identity.v3:OpenIDConnectPassword')
+DEBUG: stevedore.extension found extension EntryPoint.parse('token = keystoneauth1.loading._plugins.identity.generic:Token')
+DEBUG: stevedore.extension found extension EntryPoint.parse('v3token = keystoneauth1.loading._plugins.identity.v3:Token')
+DEBUG: stevedore.extension found extension EntryPoint.parse('password = keystoneauth1.loading._plugins.identity.generic:Password')
+DEBUG: stevedore.extension found extension EntryPoint.parse('table = cliff.formatters.table:TableFormatter')
+DEBUG: stevedore.extension found extension EntryPoint.parse('json = cliff.formatters.json_format:JSONFormatter')
+DEBUG: stevedore.extension found extension EntryPoint.parse('shell = cliff.formatters.shell:ShellFormatter')
+DEBUG: stevedore.extension found extension EntryPoint.parse('value = cliff.formatters.value:ValueFormatter')
+DEBUG: stevedore.extension found extension EntryPoint.parse('yaml = cliff.formatters.yaml_format:YAMLFormatter')
+DEBUG: stevedore.extension found extension EntryPoint.parse('yaml = clifftablib.formatters:YamlFormatter')
+DEBUG: stevedore.extension found extension EntryPoint.parse('json = clifftablib.formatters:JsonFormatter')
+DEBUG: stevedore.extension found extension EntryPoint.parse('html = clifftablib.formatters:HtmlFormatter')
+DEBUG: neutronclient.neutron.v2_0.network.CreateNetwork run(Namespace(admin_state=True, availability_zone_hints=None, columns=[], dns_domain=None, formatter='table', max_width=0, name=u'net01', noindent=False, prefix='', provider:network_type=None, provider:physical_network=None, provider:segmentation_id=None, qos_policy=None, request_format='json', tenant_id=None, variables=[]))
+DEBUG: keystoneauth.session REQ: curl -g -i -X GET http://192.168.11.216:5000/v2.0 -H "Accept: application/json" -H "User-Agent: keystoneauth1/2.4.1 python-requests/2.9.1 CPython/2.7.6"
+DEBUG: keystoneauth.session RESP: [200] Content-Length: 340 Vary: X-Auth-Token Keep-Alive: timeout=5, max=100 Server: Apache/2.4.7 (Ubuntu) Connection: Keep-Alive Date: Mon, 27 Jun 2016 08:14:19 GMT Content-Type: application/json x-openstack-request-id: req-75b5c35b-0457-4050-b0d0-fc8c67548d1b 
+RESP BODY: {"version": {"status": "stable", "updated": "2014-04-17T00:00:00Z", "media-types": [{"base": "application/json", "type": "application/vnd.openstack.identity-v2.0+json"}], "id": "v2.0", "links": [{"href": "http://192.168.11.216:5000/v2.0/", "rel": "self"}, {"href": "http://docs.openstack.org/", "type": "text/html", "rel": "describedby"}]}}
+
+DEBUG: keystoneauth.identity.v2 Making authentication request to http://192.168.11.216:5000/v2.0/tokens
+DEBUG: keystoneauth.session REQ: curl -g -i -X POST http://192.168.11.216:9696/v2.0/networks.json -H "User-Agent: python-neutronclient" -H "Content-Type: application/json" -H "Accept: application/json" -H "X-Auth-Token: {SHA1}9c3f91424f49a168c11f6bad2cd291d57c68d2d8" -d '{"network": {"name": "net01", "admin_state_up": true}}'
+DEBUG: keystoneauth.session RESP: [201] Date: Mon, 27 Jun 2016 08:14:26 GMT Connection: keep-alive Content-Type: application/json; charset=UTF-8 Content-Length: 489 X-Openstack-Request-Id: req-c772d6c4-4c63-4bc8-8604-b67f03cab049 
+RESP BODY: {"network": {"status": "ACTIVE", "router:external": false, "availability_zone_hints": [], "availability_zones": [], "description": "", "subnets": [], "shared": false, "tenant_id": "97d8e100f02e482581fc3763eaaea10e", "created_at": "2016-06-27T08:14:26", "tags": [], "updated_at": "2016-06-27T08:14:26", "ipv6_address_scope": null, "admin_state_up": true, "ipv4_address_scope": null, "port_security_enabled": true, "mtu": 1450, "id": "365e9eeb-69f2-4801-b501-51184e4e17ec", "name": "net01"}}
+
+Created a new network:
++-------------------------+--------------------------------------+
+| Field                   | Value                                |
++-------------------------+--------------------------------------+
+| admin_state_up          | True                                 |
+| availability_zone_hints |                                      |
+| availability_zones      |                                      |
+| created_at              | 2016-06-27T08:14:26                  |
+| description             |                                      |
+| id                      | 365e9eeb-69f2-4801-b501-51184e4e17ec |
+| ipv4_address_scope      |                                      |
+| ipv6_address_scope      |                                      |
+| mtu                     | 1450                                 |
+| name                    | net01                                |
+| port_security_enabled   | True                                 |
+| router:external         | False                                |
+| shared                  | False                                |
+| status                  | ACTIVE                               |
+| subnets                 |                                      |
+| tags                    |                                      |
+| tenant_id               | 97d8e100f02e482581fc3763eaaea10e     |
+| updated_at              | 2016-06-27T08:14:26                  |
++-------------------------+--------------------------------------+
+
+----------------------------------------------------------------------------
+
+https://lists.opendaylight.org/pipermail/neutron-dev/2016-January/000533.html
