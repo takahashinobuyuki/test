@@ -1,0 +1,44 @@
+やったこと
+
+1.externalodl controller
+compute  2台　
+stable/mitaka (networking-odlも)
+
+odl 手動インストール
+feature:install odl-ovsdb-openstack
+をインストール後、
+devstackで ./stack.sh 実施。
+その後、feature:install odl-restconf-all odl-aaa-authn odl-dlux-core odl-mdsal-apidocs
+実施。
+net-create、VMの作成は確認。
+2回繰り替えした。(手順を確立するため)
+
+2.
+ODL_OVS_MANAGERS=[controller ip]
+externalodl controller
+compute
+stable/mitaka (networking-odlも)
+
+odl 手動インストール
+feature:install odl-ovsdb-openstack  odl-aaa-authn odl-dlux-core odl-mdsal-apidocs odl-mdsal-clustering
+をインストール後、 clusterの設定を実施し(記事では3つだが、今回はcontroller1つ) devstackで ./stack.sh 実施。
+その後、feature:install odl-restconf-all
+実施。
+net-create の作成。VMの作成は失敗。https://lists.opendaylight.org/pipermail/neutron-dev/2016-January/000533.html
+にあるエラーになった。
+
+3.
+上記を振り返り、cluster処理も含めると 1度に featureを実施。odl-restconf-allの順番を変える。odl-ovsdb-openstackの後にした。
+ODL_OVS_MANAGERS=[controller ip]
+externalodl controller
+compute
+stable/mitaka (networking-odlも)
+
+odl 手動インストール
+feature:install odl-ovsdb-openstack odl-restconf-all odl-aaa-authn odl-dlux-core odl-mdsal-apidocs odl-mdsal-clustering
+をインストール後、 clusterの設定を実施し(記事では3つだが、今回はcontroller1つ) devstackで ./stack.sh 実施。
+
+net-create、VMの作成は確認できた。
+しかし、http://[controller IP]:8181/restconf/config/neutron:neutron/にて net01、vm01などのidなどは取得できたが、
+urn:opendaylight:neutron の記述を確認できなかった。
+
