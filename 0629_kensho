@@ -1,0 +1,97 @@
+やったこと
+
+http://[ip]:8181/restconf/config/neutron:neutron/
+にてname spaceが表示されない件は
+google chromeで実行した場合
+name spaceが表示される。問題なし
+
+
+
+2.ODL_controller 3台
+
+ODL_OVS_MANAGERS=[controller ip]
+externalodl controller
+compute
+stable/mitaka (networking-odlも)
+
+odl 手動インストール
+feature:install odl-ovsdb-openstack 
+feature:install odl-restconf-all #odl-aaa-authn odl-dlux-core odl-mdsal-apidocs odl-mdsal-clustering
+をインストール後、 clusterの設定を実施し(記事では3つだが、今回はcontroller1つ) devstackで ./stack.sh 実施。
+stack.shの途中で失敗した。
+
+
+3.ODL_OVS_MANAGERS=[controller ip]
+externalodl controller
+compute
+stable/mitaka (networking-odlも)
+
+odl 手動インストール
+br-intの部分→ etc/vetty.xmlにて 8080を8181に修正
+feature:install odl-ovsdb-openstack 
+feature:install odl-restconf-all #odl-aaa-authn odl-dlux-core odl-mdsal-apidocs odl-mdsal-clustering
+をインストール後、 clusterの設定を実施した。
+
+
+devstackで ./stack.sh 実施し、途中で失敗。
+ODL_MGR_IPSを認識できていない。。
+
+local.confにてコメントアウトしていた。。
+
+# ODL_MGR_IP=192.168.11.213
+# ODL_OVS_MANAGERS=192.168.11.213,192.168.11.214,192.168.11.215
+
+
+4.ODL_controller 3台
+
+ODL_OVS_MANAGERS=[controller ip]
+externalodl controller
+compute
+stable/mitaka (networking-odlも)
+
+odl 手動インストール
+feature:install odl-ovsdb-openstack 
+feature:install odl-restconf-all #odl-aaa-authn odl-dlux-core odl-mdsal-apidocs odl-mdsal-clustering
+をインストール後、 clusterの設定を実施し
+br-intの部分→ etc/vetty.xmlにて 8080を8181に修正
+devstackで ./stack.sh 実施し、最後まで終了。
+
+neutron -v net-create net01にて以前と同様mechanism_driverのログが表示され、失敗。
+
+local.conf
+ODL_MGR_IPS=192.168.11.213,192.168.11.214,192.168.11.215が抜けていた。。
+ODL_MGR_IP=192.168.11.213
+ODL_OVS_MANAGERS=192.168.11.213,192.168.11.214,192.168.11.215
+追加した。
+
+---------------------------------------
+---------------------------------------
+
+5.ODL_controller 3台
+
+ODL_OVS_MANAGERS=[controller ip]
+externalodl controller
+compute
+stable/mitaka (networking-odlも)
+
+odl 手動インストール
+feature:install odl-ovsdb-openstack 
+feature:install odl-restconf-all #odl-aaa-authn odl-dlux-core odl-mdsal-apidocs odl-mdsal-clustering
+をインストール後、 clusterの設定を実施し
+br-intの部分→ etc/vetty.xmlにて 8080を8181に修正
+devstackで ./stack.sh 実施し、最後まで終了。
+
+neutron -v net-create net01にて mechanism_driverの以前のログが表示され、失敗。
+
+local.conf
+ODL_MGR_IPS=192.168.11.213,192.168.11.214,192.168.11.215
+ODL_OVS_MANAGERS=192.168.11.213,192.168.11.214,192.168.11.215
+追加した。
+
+---------------------------------------------------
+
+external controllerに ODLを入れてみるか。。
+
+
+
+
