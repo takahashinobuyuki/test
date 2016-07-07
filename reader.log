@@ -1,0 +1,13 @@
+ODL_Controllerにて
+opendaylight-user@root>bundle:install -s mvn:org.jolokia/jolokia-osgi/1.3.1
+Bundle ID: 284
+となり、
+computeノードで
+GET http://192.168.11.214:8181/jolokia/read/org.opendaylight.controller:Category=Shards,name=member-1-shard-inventory-config,type=DistributedConfigDatastore
+とたたいたら
+
+[3:38]  
+{"request":{"mbean":"org.opendaylight.controller:Category=Shards,name=member-1-shard-inventory-config,type=DistributedConfigDatastore","type":"read"},"value":{"ReadWriteTransactionCount":0,"SnapshotIndex":35,"InMemoryJournalLogSize":1,"ReplicatedToAllIndex":-1,"Leader":"member-1-shard-inventory-config","LastIndex":36,"RaftState":"Leader","LastCommittedTransactionTime":"2016-07-07 14:07:40.710","LastApplied":36,"LastLogIndex":36,"LastLeadershipChangeTime":"2016-07-07 13:30:04.739","PeerAddresses":"","WriteOnlyTransactionCount":0,"FollowerInitialSyncStatus":false,"FollowerInfo":[],"FailedReadTransactionsCount":0,"StatRetrievalTime":"3.004 ms","CurrentTerm":1,"LastTerm":1,"FailedTransactionsCount":0,"PendingTxCommitQueueSize":0,"VotedFor":"member-1-shard-inventory-config","SnapshotCaptureInitiated":false,"CommittedTransactionsCount":39,"TxCohortCacheSize":0,"LastLogTerm":1,"StatRetrievalError":null,"CommitIndex":36,"SnapshotTerm":1,"AbortTransactionsCount":0,"ReadOnlyTransactionCount":0,"ShardName":"member-1-shard-inventory-config","LeadershipChangeCount":1,"InMemoryJournalDataSize":1334},"timestamp":1467868755,"status":200}ubuntu@allinone-compute:~/devstack$
+
+[3:39]  
+RaftState":"Leader と確認しました。
