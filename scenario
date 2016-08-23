@@ -1,0 +1,140 @@
+http://artifacts.opnfv.org/opnfvdocs/brahmaputra/docs/configguide/configoptions.html#opnfv-scenarios
+参照
+Installer で 幅広く 対応していそうなのが fuel 次いで Apex
+
+https://wiki.opnfv.org/display/functest/Functest+Release+2
+によると Fuelでは
+------------------
+・nosdn、old_l2、onos、nosdn-ovs はfunctest vping確認出来るとのこと
+
+・odl_l3 blocked by vPing
+・bgpvpn not mature
+
+----------------------
+
+Openstack deploy
+
+Scenario    Installer
+
+nosdn-ha     Apex compass  fuel joid  安定
+( Openstack high availability)
+
+odl_l2-ha    Apex compass  fuel joid  安定
+(Openstack opendaylight layer2 high availability)
+odl_l3-ha    Apex                         fuel  ※(両方 deploy可能だが、機能、安定性に制限あり)
+(Openstack opendaylight layer3 high availability)
+
+odl_l2-sfc   Apex                         fuel (両方 deploy可能だが、機能、安定性に制限あり)
+(Openstack opendaylight layer2 service function chaining)
+
+onos-ha      Apex※(deploy可能だが、機能、安定性に制限あり) compass  fuel   joid※(deploy可能だが、機能、安定性に制限あり)
+(Openstack onos high availability)
+
+ovs-ha                     fuel       ※(deploy可能だが、機能、安定性に制限あり)
+(Openstack open v switch high availability)
+kvm-ha                     fuel       ※(deploy可能だが、機能、安定性に制限あり)
+(Openstack kvm high availability)
+bgpvpn                     fuel       ※(deploy可能だが、機能、安定性に制限あり)
+
+
+--------------------------------------------------------------------------
+scenario 命名規則
+os-[controller]-[feature]-[mode]-[option]
+
+[controller] SDN controller
+nosdn, ocl, odl, onos
+
+[feature]
+example values: nofeature, kvm, ovs, sfc
+
+[mode]
+possible values: ha, noha
+
+-----------------------------------------------------------
+
+onos Open network operating system
+(通信事業者向けのOpenflowコントローラ)
+
+ocl OpenContrail (Opensourceのcontrail) コントローラ
+
+bgpvpn feature
+layer3
+
+bgpvpn (openstack neutron bgpvpn)
+サービスプロバイダネットワークで MPLS/BGP
+
+BGPVPNを作成
+障害が発生して、route targetがおかしくなる
+無効なルートターゲット (e.g. 65536:0) を作成するが失敗する
+VPNのリストを取得すると、エラーを生じることなく動作する
+既存のbgpvpnを更新する。
+既存のbgpvpnのパラメータを表示
+bgpvpnを削除
+neutron ネットワークにて既存のBGP VPNを関連付ける。
+関連するneutron のネットワークを取得する。
+ネットワークの紐付けを削除する
+neutron ルータに既存のbgpvpnを関連付ける
+関連するneutronルータの情報を取得する
+ルータの関連するものを削除する
+
+case1 データセンターのゲートウェイとの統合：ルートが正しくSDNコントローラとデータセンターのゲートウェイとの間で交換されるかどうかを確認する。
+case2 DC間の通信：MPLSバックボーンを介して接続された2つのデータセンター間の通信が動作するかどうか確認する。
+
+case1 
+ データセンターのゲートウェイとSDNコントローラ間の経路交換。
+テストルートが正しくデータセンターのゲートウェイとSDNコントローラとの間で交換される場合。
+
+case1
+データセンターのゲートウェイのデフォルトルートはSDNコントローラによって学習されているかどうかを確認する
+内部転送ルートは、DC-GWによって学習されているかどうかを確認する。
+DC-GWに設定したVPN
+VPNに接続されたサブネットへのルートは、DC-GWによって学習されているかどうかを確認する。
+
+インターデータセンターの接続
+テスト（間にDC-GWとの）インターネットを介して2つの物理的に分離されたデータセンター間の接続が動作するかどうか。これは、CIと統合することができる方法ならば、明確化することができる。
+
+APIの検証およびFunctest中の機能OPNFVレベルのテストのためのテンペストテスト。
+テストケースの変形の一種。Router R1にnetwork/subnet N1/S1を接続する。 N2を設定する。VPN1を作ってRouter R1とNetwork N2を接続
+N2のホストはN1のホストへ到達できる。
+
+---
+onos 通信事業者向け
+
+
+Virtual Network Northbound API  Network Create/Update/Delete
+                                Subnet Create/Update/Delete
+                                Virtualport Create/Update/Delete
+
+Ovsdb function Test             Ovsdb接続設定/デフォルト設定の送信
+                                OpenFlowを接続設定が自動的に/デフォルトのOpenFlowのtableは、インストール
+
+-------------------------
+
+VMは、オンラインに行くとフルメッシュ/ VXLAN build/ VMは、相互に到達することはできない。
+post/get/delete/put含まれるネットワーク/サブネット/ポートapi.テストアクションをテストするために、JSONメッセージを送信する方法を取る。
+OVSDB
+
+この方法は、APIの数を開発し、それらが正しく設定されたOVSかどうかを確認するために、これらのAPIからの機能をovsdbから呼び出す必要がある。
+
+バーチャルネットNorthboundのテストケース、詳細を参照すること。
+
+図面から
+Test case から Test driverに投げて、Test driverはNeutron REST APIへ投げる。
+Neutron REST APIは Test Case にResponseを返す。
+
+
+Ovsdbテストのテストケースは、詳細を参照すること
+Test CaseからTest Driverへ投げて Test Driverは Develop provide apiへ投げる。
+Develop provide apiはOVSDB Adapterへ投げる。 OVSDB AdapterはOVSへ投げる。
+OVSはTest CaseにResponseを返す。
+
+--------------------------------------
+
+odl_l2-ha 
+
+openstack odl VM同士をVXLAN等で接続
+
+
+deployするのに、200GB以上必要としたりするので、scenarioを実行するにあたり、
+サーバの容量が気になる。。
+joidは、 isoない、気になる。。
